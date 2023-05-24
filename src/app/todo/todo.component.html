@@ -1,0 +1,23 @@
+<div class="centerBtn">
+  <button mat-raised-button color="basic" (click)="showAddToDo()" class="addTaskBtn">Ajouter une tache</button>
+</div>
+<div class="flex">
+  <div class="width50">
+  <h1>Mes taches à faire</h1>
+  <div *ngFor="let todo of todos">
+    <div *ngIf="!todo.completed">
+      <app-todo-waiting-list [todo]="todo"></app-todo-waiting-list>
+    </div>
+  </div>
+  </div>
+  <div class="width50">
+    <h1>Mes taches accomplies</h1>
+    <div *ngFor="let todo of todos">
+      <div *ngIf="todo.completed">
+        <app-tasks-completed [todo]="todo"></app-tasks-completed>
+      </div>
+  </div>
+  <div *ngIf="showTodo">
+    <app-todo-input (hideAddToDo)="hideAddToDo($event)" [id]="nextId"></app-todo-input>
+  </div>
+</div>

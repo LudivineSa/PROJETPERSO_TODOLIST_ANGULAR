@@ -1,0 +1,17 @@
+.card {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.header {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.dateDone {
+  font-style: italic;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  padding: 0;
+  line-height: 0.5rem;
+}

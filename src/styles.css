@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 1rem; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.flex{
+  display: flex !important;
+  align-items: baseline;
+}
+
+.delete {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.deleteCompleted {
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.input {
+  width: 30rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+* {
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: rgb(245, 243, 243);
+  margin: 0;
+  padding: 0;
+}
+
+.absolute {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  align-items: center;
+}
+
+.card {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.header {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

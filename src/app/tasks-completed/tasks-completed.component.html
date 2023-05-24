@@ -1,0 +1,15 @@
+<mat-card class="card">
+  <mat-card-header class="header">{{todo.title}}</mat-card-header>
+    <mat-card-content>
+      <div class="flex absolute">
+        <div *ngFor="let tag of todo.tags">
+          <app-tags [tag]="tag"></app-tags>
+        </div>
+        <mat-icon class="deleteCompleted" (click)="deleteTask()">delete</mat-icon>
+      </div>
+      <div *ngIf="todo.dayCompleted">
+        <p class="dateDone">Fait le {{ todo.dayCompleted | date: 'dd MMMM'}}</p>
+      </div>
+      <p *ngIf="todo.description">{{todo.description}}</p>
+    </mat-card-content>
+</mat-card>
