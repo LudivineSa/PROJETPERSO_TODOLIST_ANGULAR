@@ -7,6 +7,7 @@ export class Todo {
   dayCompleted?: Date;
   tags: Tag[];
   description?:string;
+  urgent?: boolean;
 
   constructor(id: number, tags: Tag[]) {
     this.id = id;

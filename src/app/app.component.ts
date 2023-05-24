@@ -15,6 +15,5 @@ export class AppComponent {
 // TODO: 7 Voir pour ajouter un système de rappel (notification)
 // TODO: 3 Ajouter un système de priorité (faible, moyenne, haute)
 // TODO: 4 Ajouter un système de tri par catégorie / date / priorité
-// TODO: 1 Ajouter la possibilité de modifier une tache à faire
 // TODO: Faire le CSS
 // TODO: Faire le responsive

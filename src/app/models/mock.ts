@@ -24,7 +24,8 @@ export const TODOS: Todo[] = [{
   id: 2,
   title: 'Faire le css',
   completed: false,
-  tags: [TAGS[1]]
+  tags: [TAGS[1]],
+  urgent: true
 }];
 
 

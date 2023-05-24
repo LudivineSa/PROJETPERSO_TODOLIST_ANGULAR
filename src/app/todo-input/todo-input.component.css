@@ -42,3 +42,7 @@
   margin-bottom: 1rem;
 }
 
+.inline-bold {
+  display: inline-block;
+  font-weight: 500;
+}
