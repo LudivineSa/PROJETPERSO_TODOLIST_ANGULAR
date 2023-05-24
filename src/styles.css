@@ -57,3 +57,20 @@ body {
   font-size: 1.2rem;
   font-weight: 500;
 }
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.m1 {
+  margin: 1rem;
+}
+
+.gap {
+  gap: 1rem;
+}

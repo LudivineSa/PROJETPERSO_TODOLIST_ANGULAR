@@ -1,5 +1,6 @@
 <div class="centerBtn">
   <button mat-raised-button color="basic" (click)="showAddToDo()" class="addTaskBtn">Ajouter une tache</button>
+  <button mat-raised-button color="basic" (click)="showAddCategoryTag()" class="addTaskBtn">Ajouter une catégorie</button>
 </div>
 <div class="flex">
   <div class="width50">
@@ -19,5 +20,8 @@
   </div>
   <div *ngIf="showTodo">
     <app-todo-input (hideAddToDo)="hideAddToDo($event)" [id]="nextId"></app-todo-input>
+  </div>
+  <div *ngIf="showCategoryTag">
+    <app-tag-input (hideCategoryTag)="hideAddCategory($event)"></app-tag-input>
   </div>
 </div>

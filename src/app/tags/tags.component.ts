@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Tags } from '../models/tags.model';
+import { Tag } from '../models/tags.model';
 
 @Component({
   selector: 'app-tags',
@@ -7,6 +7,6 @@ import { Tags } from '../models/tags.model';
   styleUrls: ['./tags.component.css']
 })
 export class TagsComponent {
-  @Input() tag: Tags = {name: '', color: '', backgroundColor: ''};
+  @Input() tag: Tag = {name: '', color: '', backgroundColor: ''};
 
 }

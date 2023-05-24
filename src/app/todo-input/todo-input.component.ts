@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodosService } from '../service/todos.service';
 import { Todo } from '../models/todo.model';
-import { TypesService} from '../service/tags.service';
-import { Tags } from '../models/tags.model';
+import { TagsService} from '../service/tags.service';
+import { Tag } from '../models/tags.model';
 
 @Component({
   selector: 'app-todo-input',
@@ -18,9 +18,9 @@ export class TodoInputComponent {
 
   displayDescription: boolean = false;
 
-  constructor(private todosService: TodosService, private typesService: TypesService) { }
+  constructor(private todosService: TodosService, private tagsService: TagsService) { }
 
-  tags: Tags[] = this.typesService.getTypes();
+  tags: Tag[] = this.tagsService.getTags();
 
   showInputDescription(): void {
     this.displayDescription = true;

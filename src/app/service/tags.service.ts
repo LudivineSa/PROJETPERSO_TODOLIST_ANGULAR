@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { TAGS } from '../models/mock';
-import { Tags } from '../models/tags.model';
+import { Tag } from '../models/tags.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TypesService {
+export class TagsService {
 
   constructor() { }
 
-  getTypes(): Tags[] {
+  getTags(): Tag[] {
     return TAGS;
+  }
+
+  addTags(tag: Tag): void {
+    TAGS.push(tag);
+  }
+
+  deleteTags(tag: Tag): void {
+    TAGS.splice(TAGS.indexOf(tag), 1);
   }
 }

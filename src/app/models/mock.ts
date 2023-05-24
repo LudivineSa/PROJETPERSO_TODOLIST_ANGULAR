@@ -1,7 +1,7 @@
 import { Todo } from "./todo.model";
-import { Tags } from "./tags.model";
+import { Tag } from "./tags.model";
 
-export const TAGS : Tags[] = [
+export const TAGS : Tag[] = [
   {
     name: 'Travail',
     color: '#FFF',

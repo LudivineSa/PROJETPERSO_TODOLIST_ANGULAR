@@ -1,14 +1,14 @@
-import { Tags } from "./tags.model";
+import { Tag } from "./tags.model";
 
 export class Todo {
   id: number;
   title: string;
   completed: boolean;
   dayCompleted?: Date;
-  tags: Tags[];
+  tags: Tag[];
   description?:string;
 
-  constructor(id: number, tags: Tags[]) {
+  constructor(id: number, tags: Tag[]) {
     this.id = id;
     this.title = '';
     this.completed = false;

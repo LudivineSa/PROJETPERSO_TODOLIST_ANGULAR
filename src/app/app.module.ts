@@ -22,6 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { TagsComponent } from './tags/tags.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { TodoWaitingListComponent } from './todo-waiting-list/todo-waiting-list.component';
+import { TagInputComponent } from './tag-input/tag-input.component';
 
 registerLocaleData(localeFr);
 
@@ -32,7 +33,8 @@ registerLocaleData(localeFr);
     TodoComponent,
     TasksCompletedComponent,
     TagsComponent,
-    TodoWaitingListComponent
+    TodoWaitingListComponent,
+    TagInputComponent
   ],
   imports: [
     MatChipsModule,
