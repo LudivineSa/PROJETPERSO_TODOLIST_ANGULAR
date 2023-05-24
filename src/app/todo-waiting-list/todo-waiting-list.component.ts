@@ -10,10 +10,20 @@ export class TodoWaitingListComponent {
 
   @Input() todo: Todo = new Todo(0, []);
 
+  showEdit: boolean = false;
+
   constructor(private todosService: TodosService) { }
 
   deleteTask(): void {
     this.todosService.deleteToDo(this.todo)
+  }
+
+  editTask(): void {
+    this.showEdit = true;
+  }
+
+  hideEditToDo(value : boolean): void {
+    this.showEdit = value;
   }
 
 }

@@ -18,8 +18,11 @@ export class TodosService {
     return TODOS;
   }
 
-  updateToDoTitle(todo: Todo): void {
-    TODOS.filter((item) => item.id === todo.id)[0].title = todo.title;
+  editToDoById(todo: Todo): void {
+    const indexItemToDelete = TODOS.findIndex((item) => item.id === todo.id);
+    if(indexItemToDelete !== -1) {
+      TODOS.splice(indexItemToDelete, 1, todo);
+    }
   }
 
   createToDo(): void {

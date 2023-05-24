@@ -5,8 +5,12 @@
         <div *ngFor="let tag of todo.tags">
           <app-tags [tag]="tag"></app-tags>
         </div>
+        <mat-icon class="deleteCompleted" (click)="editTask()">edit</mat-icon>
         <mat-icon class="deleteCompleted" (click)="deleteTask()">delete</mat-icon>
       </div>
       <p *ngIf="todo.description">{{todo.description}}</p>
     </mat-card-content>
 </mat-card>
+<div *ngIf="showEdit">
+  <app-todo-input (hideEditToDo)="hideEditToDo($event)" [todo]="todo"></app-todo-input>
+</div>

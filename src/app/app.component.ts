@@ -9,11 +9,12 @@ export class AppComponent {
   title = 'Ma liste de tâches';
 }
 
-// TODO: Utiliser le localStorage pour sauvegarder les taches
-// TODO: Ajouter un formulaire pour modifier une catégorie de tache
-// TODO: Ajouter une date limite pour chaque tache (à faire avant le..)
-// TODO: Voir pour ajouter un système de rappel (notification)
-// TODO: Ajouter un système de priorité (faible, moyenne, haute)
-// TODO: Ajouter un système de tri par catégorie / date / priorité
-// TODO: Ajouter un système de validaton du formulaire
-// TODO: Ajouter la possibilité de modifier une tache à faire
+// TODO: 6 Utiliser le localStorage pour sauvegarder les taches
+// TODO: 2 Ajouter un formulaire pour modifier une catégorie de tache
+// TODO: 5 Ajouter une date limite pour chaque tache (à faire avant le..)
+// TODO: 7 Voir pour ajouter un système de rappel (notification)
+// TODO: 3 Ajouter un système de priorité (faible, moyenne, haute)
+// TODO: 4 Ajouter un système de tri par catégorie / date / priorité
+// TODO: 1 Ajouter la possibilité de modifier une tache à faire
+// TODO: Faire le CSS
+// TODO: Faire le responsive

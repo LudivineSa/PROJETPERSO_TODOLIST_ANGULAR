@@ -2,7 +2,7 @@
 <div class="modal">
 <mat-card class="card toDo">
   <h2>Ajouter une nouvelle tache</h2>
-  <form #todoForm="ngForm" (ngSubmit)="todoForm.valid && addToDo()">
+  <form #todoForm="ngForm" (ngSubmit)="todoForm.valid && addOrEditToDo()">
     <div class="flex">
         <mat-form-field class="example-full-width" class="input">
           <input matInput [(ngModel)]="todo.title"  name="task" placeholder="Nouvelle tâche" #todoTitle="ngModel" required maxLength="20">
@@ -27,7 +27,7 @@
     </mat-form-field>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Ajouter</button>
+      <button mat-raised-button color="primary" type="submit">Valider</button>
       <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
     </mat-card-actions>
   </form>

@@ -13,8 +13,8 @@ import { Tag } from '../models/tags.model';
 export class TodoInputComponent {
 
   @Output() hideAddToDo: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() id: number = 0;
-  todo: Todo = new Todo(0, []);
+  @Output() hideEditToDo: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() todo: Todo = new Todo(0, [])
 
   displayDescription: boolean = false;
 
@@ -26,15 +26,20 @@ export class TodoInputComponent {
     this.displayDescription = true;
   }
 
-  addToDo(): void {
-    this.todo.id = this.id;
-    this.todosService.addToDo(this.todo);
-    this.todo = new Todo(0, []);
-    this.hideAddToDo.emit(false);
+  addOrEditToDo(): void {
+    if(this.todo.id === this.todosService.nextId()){
+      this.todosService.addToDo(this.todo);
+      this.hideAddToDo.emit(false);
+    } else {
+      this.todosService.editToDoById(this.todo);
+      this.hideEditToDo.emit(false);
+    }
   }
 
   cancel(): void {
     this.todo = new Todo(0, []);
     this.hideAddToDo.emit(false);
+    this.hideEditToDo.emit(false);
   }
+
 }

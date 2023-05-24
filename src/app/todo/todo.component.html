@@ -19,7 +19,7 @@
       </div>
   </div>
   <div *ngIf="showTodo">
-    <app-todo-input (hideAddToDo)="hideAddToDo($event)" [id]="nextId"></app-todo-input>
+    <app-todo-input (hideAddToDo)="hideAddToDo($event)" [todo]="newToDo"></app-todo-input>
   </div>
   <div *ngIf="showCategoryTag">
     <app-tag-input (hideCategoryTag)="hideAddCategory($event)"></app-tag-input>

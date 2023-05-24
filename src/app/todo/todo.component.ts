@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodosService } from '../service/todos.service';
+import { Todo } from '../models/todo.model';
 
 @Component({
   selector: 'app-todo',
@@ -17,6 +18,7 @@ export class TodoComponent {
 
   showAddToDo(): void {
     this.showTodo = true;
+    this.newToDo = new Todo(this.todosService.nextId(), [])
   }
 
   showAddCategoryTag(): void {
@@ -31,6 +33,6 @@ export class TodoComponent {
     this.showCategoryTag = value;
   }
 
-  nextId = this.todos.length + 1;
+  newToDo = new Todo(this.todosService.nextId(), [])
 
 }
