@@ -2,23 +2,32 @@
 <div class="modal">
 <mat-card class="card toDo">
   <h2>Ajouter une nouvelle tache</h2>
-  <form>
+  <form #todoForm="ngForm" (ngSubmit)="todoForm.valid && addToDo()">
     <div class="flex">
         <mat-form-field class="example-full-width" class="input">
-          <input matInput [(ngModel)]="todo.title"  name="task" placeholder="Nouvelle tâche">
+          <input matInput [(ngModel)]="todo.title"  name="task" placeholder="Nouvelle tâche" #todoTitle="ngModel" required maxLength="20">
+          <div class="error" *ngIf="todoForm.submitted && todoTitle.errors">
+            <mat-error *ngIf="todoTitle.errors?.['required']">Le titre est obligatoire</mat-error>
+          </div>
         </mat-form-field>
+        <div>
+        <mat-select multiple class="select" placeholder="Catégorie" [(ngModel)]="todo.tags" name="tags" required #todoTag="ngModel">
+          <mat-option *ngFor="let tag of tags" [value]="tag">
+            {{tag.name}}
+          </mat-option>
+        </mat-select>
+        <div class="error m1" *ngIf="todoForm.submitted && todoTag.errors">
+          <mat-error *ngIf="todoTag.errors?.['required']">Veuillez sélectionner au moins une catégorie</mat-error>
+        </div>
+      </div>
     </div>
     <button mat-raised-button color="accent" class="addDescriptionBtn" *ngIf="!displayDescription" (click)="showInputDescription()">Ajouter une description</button>
     <mat-form-field class="description" *ngIf="displayDescription">
       <textarea matInput [(ngModel)]="todo.description" name="description" placeholder="Description" name="description"></textarea>
     </mat-form-field>
-    <mat-select multiple class="select" placeholder="Catégorie" [(ngModel)]="todo.tags" name="tags">
-      <mat-option *ngFor="let tag of tags" [value]="tag">
-        {{tag.name}}
-      </mat-option>
-    </mat-select>
+
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="addToDo()">Ajouter</button>
+      <button mat-raised-button color="primary" type="submit">Ajouter</button>
       <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
     </mat-card-actions>
   </form>
