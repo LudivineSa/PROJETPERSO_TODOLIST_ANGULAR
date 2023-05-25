@@ -1,7 +1,6 @@
 
 <div class="modal">
 <mat-card class="card toDo">
-  <h2>Ajouter une nouvelle tache</h2>
   <form #todoForm="ngForm" (ngSubmit)="todoForm.valid && addOrEditToDo()">
     <div class="flex">
         <mat-form-field class="example-full-width" class="input">
@@ -24,8 +23,16 @@
     <mat-form-field class="description">
       <textarea matInput [(ngModel)]="todo.description" name="description" placeholder="Description (facultatif)" name="description"></textarea>
     </mat-form-field>
-    <div>
+    <div class="flex space-between">
+      <div>
       <p class="inline-bold">Noter cette tache comme urgente:</p> <mat-checkbox [(ngModel)]="todo.urgent" name="urgent"></mat-checkbox>
+      </div>
+      <mat-form-field>
+        <mat-label>Date limite (facultatif)</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="todo.dueDate" #dueDate="ngModel" name="dueDate" [min]="dateToday">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
     <mat-card-actions>
       <button mat-raised-button color="primary" type="submit">Valider</button>

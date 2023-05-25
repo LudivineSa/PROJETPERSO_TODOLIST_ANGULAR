@@ -8,6 +8,7 @@ export class Todo {
   tags: Tag[];
   description?:string;
   urgent?: boolean;
+  dueDate?: Date;
 
   constructor(id: number, tags: Tag[]) {
     this.id = id;

@@ -1,5 +1,6 @@
 import { Todo } from '../models/todo.model';
 import { Injectable } from '@angular/core';
+import { today, deleteItemFromArray} from '../models/utils';
 
 import { TODOS, TAGS } from '../models/mock';
 
@@ -11,37 +12,46 @@ export class TodosService {
   constructor() { }
 
   nextId(): number {
-    return TODOS.length + 1;
+    return this.allTodos.length + 1;
   }
 
   getToDos(): Todo[] {
-    return TODOS;
+    return this.allTodos;
+  }
+
+  allTodos: Todo[] = TODOS;
+  todos: Todo[] = this.allTodos.filter((todo) => JSON.stringify(todo.dueDate) !== JSON.stringify(today));
+  todosDueToday : Todo[] = this.allTodos.filter((todo) => JSON.stringify(todo.dueDate) === JSON.stringify(today));
+
+  getToDosDueToday(): Todo[] {
+    return this.todosDueToday
+  }
+
+  getTodos(): Todo[] {
+    return this.todos;
+  }
+
+  updateToDos(todo: Todo): void{
+    if(JSON.stringify(todo.dueDate) === JSON.stringify(today)){
+      this.todosDueToday.push(todo)
+      deleteItemFromArray(todo, this.todos)
+    } else {
+      this.todos.push(todo)
+      deleteItemFromArray(todo, this.todosDueToday)
+    }
   }
 
   editToDoById(todo: Todo): void {
-    const indexItemToDelete = TODOS.findIndex((item) => item.id === todo.id);
-    if(indexItemToDelete !== -1) {
-      TODOS.splice(indexItemToDelete, 1, todo);
-    }
-  }
-
-  createToDo(): void {
-    TODOS.push({
-      id: TODOS.length + 1,
-      title: '',
-      completed: false,
-      tags: [TAGS[0]]
-    });
+    deleteItemFromArray(todo, this.allTodos);
   }
 
   addToDo(todo: Todo): void {
-    TODOS.push(todo)
+    this.allTodos.push(todo)
   }
 
   deleteToDo(todo: Todo): void {
-    const indexItemToDelete = TODOS.findIndex((item) => item.id === todo.id);
-    if(indexItemToDelete !== -1) {
-      TODOS.splice(indexItemToDelete, 1);
-    }
+    deleteItemFromArray(todo, this.allTodos);
+    deleteItemFromArray(todo, this.todos);
+    deleteItemFromArray(todo, this.todosDueToday);
   }
 }

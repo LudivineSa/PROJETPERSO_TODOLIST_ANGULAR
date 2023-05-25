@@ -87,3 +87,12 @@ body {
   font-size: 1rem;
   font-weight: 500;
 }
+
+.space-between {
+  justify-content: space-between;
+}
+
+.bottom {
+  top: auto !important;
+  bottom: 1rem !important;
+}

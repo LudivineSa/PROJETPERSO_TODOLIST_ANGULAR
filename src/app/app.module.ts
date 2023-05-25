@@ -23,6 +23,8 @@ import { TagsComponent } from './tags/tags.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { TodoWaitingListComponent } from './todo-waiting-list/todo-waiting-list.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 registerLocaleData(localeFr);
 
@@ -37,6 +39,8 @@ registerLocaleData(localeFr);
     TagInputComponent
   ],
   imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatChipsModule,
     MatSelectModule,
     MatCheckboxModule,

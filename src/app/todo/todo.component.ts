@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodosService } from '../service/todos.service';
 import { Todo } from '../models/todo.model';
 
@@ -11,10 +11,13 @@ export class TodoComponent {
 
   constructor(private todosService: TodosService) { }
 
-  todos = this.todosService.getToDos();
 
   showTodo: boolean = false;
   showCategoryTag: boolean = false;
+
+  todosDueToday = this.todosService.getToDosDueToday();
+  todos = this.todosService.getTodos();
+  newToDo = new Todo(this.todosService.nextId(), [])
 
   showAddToDo(): void {
     this.showTodo = true;
@@ -33,6 +36,7 @@ export class TodoComponent {
     this.showCategoryTag = value;
   }
 
-  newToDo = new Todo(this.todosService.nextId(), [])
-
+  ngOnInit() {
+    console.log(this.todosDueToday)
+  }
 }

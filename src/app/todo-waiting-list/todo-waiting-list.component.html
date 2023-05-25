@@ -12,6 +12,8 @@
         <mat-icon class="deleteCompleted" (click)="deleteTask()">delete</mat-icon>
       </div>
       <p *ngIf="todo.description">{{todo.description}}</p>
+      <p *ngIf="todo.dueDate">Date limite: {{todo.dueDate | date:'dd MMMM'}}</p>
+      <mat-slide-toggle class="absolute bottom" [(ngModel)]="todo.completed"></mat-slide-toggle>
     </mat-card-content>
 </mat-card>
 <div *ngIf="showEdit">

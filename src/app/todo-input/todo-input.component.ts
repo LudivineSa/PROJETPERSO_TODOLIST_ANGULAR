@@ -22,6 +22,14 @@ export class TodoInputComponent {
 
   tags: Tag[] = this.tagsService.getTags();
 
+  today : Date = new Date()
+  year: number = this.today.getFullYear()
+  month: number = this.today.getMonth() + 1
+  day: number = this.today.getDate()
+
+  dateToday = this.year + "-" + this.month.toString().padStart(2, "0") + "-" + this.day.toString().padStart(2, "0");
+
+
   showInputDescription(): void {
     this.displayDescription = true;
   }
@@ -34,6 +42,7 @@ export class TodoInputComponent {
       this.todosService.editToDoById(this.todo);
       this.hideEditToDo.emit(false);
     }
+    this.todosService.updateToDos(this.todo);
   }
 
   cancel(): void {

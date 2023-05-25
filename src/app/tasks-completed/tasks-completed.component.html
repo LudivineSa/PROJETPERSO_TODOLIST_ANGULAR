@@ -11,5 +11,6 @@
         <p class="dateDone">Fait le {{ todo.dayCompleted | date: 'dd MMMM'}}</p>
       </div>
       <p *ngIf="todo.description">{{todo.description}}</p>
+      <mat-slide-toggle class="absolute bottom" [(ngModel)]="todo.completed"></mat-slide-toggle>
     </mat-card-content>
 </mat-card>

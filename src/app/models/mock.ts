@@ -14,6 +14,7 @@ export const TAGS : Tag[] = [
   }
 ]
 
+
 export const TODOS: Todo[] = [{
   id: 1,
   title: 'Faire une todo list',
@@ -25,7 +26,12 @@ export const TODOS: Todo[] = [{
   title: 'Faire le css',
   completed: false,
   tags: [TAGS[1]],
-  urgent: true
+  urgent: true,
+}, {
+  id: 3,
+  title: 'Mettre les taches quotidiennes',
+  completed: false,
+  tags: [TAGS[1]],
 }];
 
 
