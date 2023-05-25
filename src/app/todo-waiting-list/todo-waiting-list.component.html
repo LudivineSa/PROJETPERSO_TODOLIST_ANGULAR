@@ -17,5 +17,5 @@
     </mat-card-content>
 </mat-card>
 <div *ngIf="showEdit">
-  <app-todo-input (hideEditToDo)="hideEditToDo($event)" [todo]="todo"></app-todo-input>
+  <app-todo-input (hideEditToDo)="hideEditToDo()" [todo]="todo"></app-todo-input>
 </div>

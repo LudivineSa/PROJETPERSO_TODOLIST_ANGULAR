@@ -22,8 +22,8 @@ export class TodoWaitingListComponent {
     this.showEdit = true;
   }
 
-  hideEditToDo(value : boolean): void {
-    this.showEdit = value;
+  hideEditToDo(): void {
+    this.showEdit = false;
   }
 
 }

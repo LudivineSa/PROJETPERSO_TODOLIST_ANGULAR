@@ -31,22 +31,37 @@ export class TodosService {
     return this.todos;
   }
 
-  updateToDos(todo: Todo): void{
-    if(JSON.stringify(todo.dueDate) === JSON.stringify(today)){
-      this.todosDueToday.push(todo)
-      deleteItemFromArray(todo, this.todos)
+  updateToDos(todo: Todo): void {
+    if (JSON.stringify(todo.dueDate) === JSON.stringify(today)) {
+      // check if it's an update or creation
+      if (!this.todosDueToday.find((eachTodo) => todo.id === eachTodo.id)) {
+        this.todosDueToday.push(todo)
+        deleteItemFromArray(todo, this.todos)
+      }
     } else {
-      this.todos.push(todo)
-      deleteItemFromArray(todo, this.todosDueToday)
+      // check if it's an update or creation
+      if (!this.todos.find((eachTodo) => todo.id === eachTodo.id)) {
+        this.todos.push(todo)
+        deleteItemFromArray(todo, this.todosDueToday)
+      }
     }
   }
 
-  editToDoById(todo: Todo): void {
-    deleteItemFromArray(todo, this.allTodos);
-  }
-
   addToDo(todo: Todo): void {
-    this.allTodos.push(todo)
+    let todoExists = this.allTodos.find((eachTodo) => eachTodo.id === todo.id);
+    if (!todoExists) {
+      this.allTodos.push(todo)
+    } else {
+      // if todo exists, updates it
+      todoExists.title = todo.title
+      todoExists.completed = todo.completed
+      todoExists.dayCompleted = todo.dayCompleted
+      todoExists.tags = todo.tags
+      todoExists.description = todo.description
+      todoExists.urgent = todo.urgent
+      todoExists.dueDate = todo.dueDate
+    }
+    this.updateToDos(todo)
   }
 
   deleteToDo(todo: Todo): void {
