@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { TodosService } from '../service/todos.service';
 import { Todo } from '../models/todo.model';
-import { TagsService} from '../service/tags.service';
+import { TagsService } from '../service/tags.service';
 import { Tag } from '../models/tags.model';
 
 @Component({
@@ -21,15 +21,13 @@ export class TodoInputComponent implements OnInit {
   constructor(private todosService: TodosService, private tagsService: TagsService) { }
 
   ngOnInit(): void {
-    // clone original todo item, so you don't
-    // update it when you cancel
+    // clone original todo item, so you don't update it when you cancel
     this.todo = { ...this.todo }
-    console.log("ngOnInit", this.todo)
   }
 
   tags: Tag[] = this.tagsService.getTags();
 
-  today : Date = new Date()
+  today: Date = new Date()
   year: number = this.today.getFullYear()
   month: number = this.today.getMonth() + 1
   day: number = this.today.getDate()
