@@ -28,12 +28,12 @@ export class TodoComponent {
     this.showCategoryTag = true;
   }
 
-  hideAddToDo(value: boolean): void {
-    this.showTodo = value;
+  hideAddToDo(): void {
+    this.showTodo = false;
   }
 
-  hideAddCategory(value: boolean): void {
-    this.showCategoryTag = value;
+  hideAddCategory(): void {
+    this.showCategoryTag = false;
   }
 
   ngOnInit() {

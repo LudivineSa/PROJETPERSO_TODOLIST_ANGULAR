@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { TodosService } from '../service/todos.service';
 import { Todo } from '../models/todo.model';
-import { TagsService} from '../service/tags.service';
+import { TagsService } from '../service/tags.service';
 import { Tag } from '../models/tags.model';
 
 @Component({
@@ -10,19 +10,24 @@ import { Tag } from '../models/tags.model';
   styleUrls: ['./todo-input.component.css']
 })
 
-export class TodoInputComponent {
+export class TodoInputComponent implements OnInit {
 
-  @Output() hideAddToDo: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() hideEditToDo: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() hideAddToDo: EventEmitter<void> = new EventEmitter<void>();
+  @Output() hideEditToDo: EventEmitter<void> = new EventEmitter<void>();
   @Input() todo: Todo = new Todo(0, [])
 
   displayDescription: boolean = false;
 
   constructor(private todosService: TodosService, private tagsService: TagsService) { }
 
+  ngOnInit(): void {
+    // clone original todo item, so you don't update it when you cancel
+    this.todo = { ...this.todo }
+  }
+
   tags: Tag[] = this.tagsService.getTags();
 
-  today : Date = new Date()
+  today: Date = new Date()
   year: number = this.today.getFullYear()
   month: number = this.today.getMonth() + 1
   day: number = this.today.getDate()
@@ -35,20 +40,16 @@ export class TodoInputComponent {
   }
 
   addOrEditToDo(): void {
-    if(this.todo.id === this.todosService.nextId()){
-      this.todosService.addToDo(this.todo);
-      this.hideAddToDo.emit(false);
-    } else {
-      this.todosService.editToDoById(this.todo);
-      this.hideEditToDo.emit(false);
-    }
-    this.todosService.updateToDos(this.todo);
+    // adding or editing is now the save action
+    this.todosService.addToDo(this.todo);
+    this.hideAddToDo.emit();
+    this.hideEditToDo.emit();
   }
 
   cancel(): void {
     this.todo = new Todo(0, []);
-    this.hideAddToDo.emit(false);
-    this.hideEditToDo.emit(false);
+    this.hideAddToDo.emit();
+    this.hideEditToDo.emit();
   }
 
 }

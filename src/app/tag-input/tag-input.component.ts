@@ -9,18 +9,19 @@ import { TagsService } from '../service/tags.service';
 
 export class TagInputComponent {
 
-  @Output() hideCategoryTag: EventEmitter<boolean> = new EventEmitter<boolean>();
+  // no need to send a boolean
+  @Output() hideCategoryTag: EventEmitter<void> = new EventEmitter<void>();
   tag: Tag = new Tag('', '#ccc', '#fff');
 
   constructor(private tagsService: TagsService) { }
 
-  addTag(): void{
+  addTag(): void {
     this.tagsService.addTags(this.tag);
-    this.hideCategoryTag.emit(false)
+    this.hideCategoryTag.emit()
   }
 
   cancel(): void {
-    this.hideCategoryTag.emit(false)
+    this.hideCategoryTag.emit()
   }
 
 }
