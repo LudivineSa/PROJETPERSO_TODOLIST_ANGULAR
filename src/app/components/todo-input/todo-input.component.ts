@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TodosService } from '../service/todos.service';
-import { Todo } from '../models/todo.model';
-import { TagsService} from '../service/tags.service';
-import { Tag } from '../models/tags.model';
+import { TodosService } from '../../shared/service/todos.service';
+import { Todo } from '../../shared/service/models/todo.model';
+import { TagsService} from '../../shared/service/tags.service';
+import { Tag } from '../../shared/service/models/tags.model';
 
 @Component({
   selector: 'app-todo-input',
@@ -43,6 +43,7 @@ export class TodoInputComponent {
       this.hideEditToDo.emit(false);
     }
     this.todosService.updateToDos(this.todo);
+    console.log(this.todosService.updateTest)
   }
 
   cancel(): void {

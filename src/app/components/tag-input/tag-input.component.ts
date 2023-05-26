@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Tag } from '../models/tags.model';
-import { TagsService } from '../service/tags.service';
+import { Tag } from '../../shared/service/models/tags.model';
+import { TagsService } from '../../shared/service/tags.service';
 @Component({
   selector: 'app-tag-input',
   templateUrl: './tag-input.component.html',

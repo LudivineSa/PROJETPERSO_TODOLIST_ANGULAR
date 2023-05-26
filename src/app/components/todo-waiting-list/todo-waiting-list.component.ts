@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Todo } from '../models/todo.model';
-import { TodosService } from '../service/todos.service';
+import { Todo } from '../../shared/service/models/todo.model';
+import { TodosService } from '../../shared/service/todos.service';
 @Component({
   selector: 'app-todo-waiting-list',
   templateUrl: './todo-waiting-list.component.html',

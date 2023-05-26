@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Todo } from '../models/todo.model';
+import { Todo } from '../../shared/service/models/todo.model';
 import { DatePipe } from '@angular/common';
-import { TodosService } from '../service/todos.service';
+import { TodosService } from '../../shared/service/todos.service';
 @Component({
   selector: 'app-tasks-completed',
   templateUrl: './tasks-completed.component.html',

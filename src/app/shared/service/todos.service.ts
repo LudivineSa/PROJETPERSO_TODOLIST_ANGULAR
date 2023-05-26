@@ -1,8 +1,10 @@
-import { Todo } from '../models/todo.model';
+import { Todo } from './models/todo.model';
 import { Injectable } from '@angular/core';
-import { today, deleteItemFromArray} from '../models/utils';
+import { today, deleteItemFromArray} from './models/utils';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { TODOS, TAGS } from '../models/mock';
+import { TODOS, TAGS } from './models/mock';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +24,9 @@ export class TodosService {
   allTodos: Todo[] = TODOS;
   todos: Todo[] = this.allTodos.filter((todo) => JSON.stringify(todo.dueDate) !== JSON.stringify(today));
   todosDueToday : Todo[] = this.allTodos.filter((todo) => JSON.stringify(todo.dueDate) === JSON.stringify(today));
+
+  test: BehaviorSubject<Todo[]> =  new BehaviorSubject<Todo[]>(TODOS);
+  updateTest: Observable<Todo[]> = this.test.asObservable().pipe(map((todos: Todo[]) => todos.filter((todo) => JSON.stringify(todo.dueDate) !== JSON.stringify(today))))
 
   getToDosDueToday(): Todo[] {
     return this.todosDueToday
@@ -47,6 +52,9 @@ export class TodosService {
 
   addToDo(todo: Todo): void {
     this.allTodos.push(todo)
+    const currentTodo = this.test.getValue();
+    const updatedTodo = [...currentTodo, todo];
+    this.test.next(updatedTodo)
   }
 
   deleteToDo(todo: Todo): void {
